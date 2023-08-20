@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ManagerService} from "../services/manager.service";
 
 @Component({
   selector: 'app-catalogue-manager',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatalogueManagerComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private managerService: ManagerService
+  ) { }
 
   ngOnInit(): void {
+    this.managerService.getListCatalogue().subscribe(
+      res => {
+        console.log(res)
+      }
+    )
   }
 
 }
